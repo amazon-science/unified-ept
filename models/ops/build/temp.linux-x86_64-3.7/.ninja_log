@@ -1,0 +1,4 @@
+# ninja log v5
+0	6907	1608519247424866933	/home/ubuntu/work/Deformable-DETR/models/ops/build/temp.linux-x86_64-3.7/home/ubuntu/work/Deformable-DETR/models/ops/src/cpu/ms_deform_attn_cpu.o	5e6572d32b9bc106
+1	22526	1608519263036795165	/home/ubuntu/work/Deformable-DETR/models/ops/build/temp.linux-x86_64-3.7/home/ubuntu/work/Deformable-DETR/models/ops/src/cuda/ms_deform_attn_cuda.o	b757776aa7bd5417
+0	22688	1608519263200794411	/home/ubuntu/work/Deformable-DETR/models/ops/build/temp.linux-x86_64-3.7/home/ubuntu/work/Deformable-DETR/models/ops/src/vision.o	afef0767836941d
