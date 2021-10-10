@@ -1,4 +1,4 @@
-# A Unified Efficient Pyramid Transformer for Semantic Segmentation
+# A Unified Efficient Pyramid Transformer for Semantic Segmentation [paper link](https://openaccess.thecvf.com/content/ICCV2021W/VSPW/papers/Zhu_A_Unified_Efficient_Pyramid_Transformer_for_Semantic_Segmentation_ICCVW_2021_paper.pdf)
 
 ## Installation
 

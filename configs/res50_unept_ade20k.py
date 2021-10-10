@@ -14,7 +14,7 @@ train_pipeline = [
     dict(type='Normalize', **img_norm_cfg),
     dict(type='Pad', size=crop_size, pad_val=0, seg_pad_val=255),
     dict(type='DefaultFormatBundle'),
-    dict(type='Collect', keys=['img', 'gt_semantic_seg']),
+    dict(type='Collect', keys=['img', 'gt_semantic_seg', 'distance_map', 'angle_map']),
 ]
 test_pipeline = [
     dict(type='LoadImageFromFile'),
@@ -39,18 +39,21 @@ data = dict(
         data_root=data_root,
         img_dir='images/training',
         ann_dir='annotations/training',
+        dt_dir='dt_offset/training',
         pipeline=train_pipeline),
     val=dict(
         type=dataset_type,
         data_root=data_root,
         img_dir='images/validation',
         ann_dir='annotations/validation',
+        dt_dir='dt_offset/validation',
         pipeline=test_pipeline),
     test=dict(
         type=dataset_type,
         data_root=data_root,
         img_dir='images/validation',
         ann_dir='annotations/validation',
+        dt_dir='dt_offset/validation',
         pipeline=test_pipeline))
 
 # model settings
@@ -102,7 +105,7 @@ evaluation = dict(interval=10000, metric='mIoU')
 
 # yapf:disable
 log_config = dict(
-    interval=200,
+    interval=20,
     hooks=[
         dict(type='TextLoggerHook', by_epoch=False),
         # dict(type='TensorboardLoggerHook')

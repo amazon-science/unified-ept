@@ -5,7 +5,6 @@ from .custom import CustomDataset
 @DATASETS.register_module()
 class ADE20KDataset(CustomDataset):
     """ADE20K dataset.
-
     In segmentation map annotation for ADE20K, 0 stands for background, which
     is not included in 150 categories. ``reduce_zero_label`` is fixed to True.
     The ``img_suffix`` is fixed to '.jpg' and ``seg_map_suffix`` is fixed to

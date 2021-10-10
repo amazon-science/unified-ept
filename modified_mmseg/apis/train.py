@@ -9,7 +9,7 @@ from mmcv.runner import build_optimizer, build_runner
 from mmseg.core import DistEvalHook, EvalHook
 
 import sys
-sys.path.append("/home/ubuntu/work/EPT_v1/modified_mmseg")
+sys.path.append("/home/ubuntu/work/unified-ept/modified_mmseg")
 from datasets import build_dataloader, build_dataset
 from mmseg.utils import get_root_logger
 

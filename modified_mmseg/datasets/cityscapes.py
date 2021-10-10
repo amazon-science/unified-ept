@@ -13,7 +13,6 @@ from .custom import CustomDataset
 @DATASETS.register_module()
 class CityscapesDataset(CustomDataset):
     """Cityscapes dataset.
-
     The ``img_suffix`` is fixed to '_leftImg8bit.png' and ``seg_map_suffix`` is
     fixed to '_gtFine_labelTrainIds.png' for Cityscapes dataset.
     """
@@ -49,7 +48,6 @@ class CityscapesDataset(CustomDataset):
 
     def results2img(self, results, imgfile_prefix, to_label_id):
         """Write the segmentation results to images.
-
         Args:
             results (list[list | tuple | ndarray]): Testing results of the
                 dataset.
@@ -58,7 +56,6 @@ class CityscapesDataset(CustomDataset):
                 the png files will be named "somepath/xxx.png".
             to_label_id (bool): whether convert output to label_id for
                 submission
-
         Returns:
             list[str: str]: result txt files which contains corresponding
             semantic segmentation images.
@@ -91,7 +88,6 @@ class CityscapesDataset(CustomDataset):
     def format_results(self, results, imgfile_prefix=None, to_label_id=True):
         """Format the results into dir (standard format for Cityscapes
         evaluation).
-
         Args:
             results (list): Testing results of the dataset.
             imgfile_prefix (str | None): The prefix of images files. It
@@ -100,7 +96,6 @@ class CityscapesDataset(CustomDataset):
                 Default: None.
             to_label_id (bool): whether convert output to label_id for
                 submission. Default: False
-
         Returns:
             tuple: (result_files, tmp_dir), result_files is a list containing
                 the image paths, tmp_dir is the temporal directory created
@@ -128,7 +123,6 @@ class CityscapesDataset(CustomDataset):
                  imgfile_prefix=None,
                  efficient_test=False):
         """Evaluation in Cityscapes/default protocol.
-
         Args:
             results (list): Testing results of the dataset.
             metric (str | list[str]): Metrics to be evaluated.
@@ -143,7 +137,6 @@ class CityscapesDataset(CustomDataset):
                 the image name of cityscapes. If not specified, a temp file
                 will be created for evaluation.
                 Default: None.
-
         Returns:
             dict[str, float]: Cityscapes/default metrics.
         """
@@ -163,13 +156,11 @@ class CityscapesDataset(CustomDataset):
 
     def _evaluate_cityscapes(self, results, logger, imgfile_prefix):
         """Evaluation in Cityscapes protocol.
-
         Args:
             results (list): Testing results of the dataset.
             logger (logging.Logger | str | None): Logger used for printing
                 related information during evaluation. Default: None.
             imgfile_prefix (str | None): The prefix of output image file
-
         Returns:
             dict[str: float]: Cityscapes evaluation results.
         """
