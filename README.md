@@ -1,6 +1,6 @@
 # Unified-EPT
 
-Code for ICCV 2021 Workshop paper: [A Unified Efficient Pyramid Transformer for Semantic Segmentation](https://openaccess.thecvf.com/content/ICCV2021W/VSPW/papers/Zhu_A_Unified_Efficient_Pyramid_Transformer_for_Semantic_Segmentation_ICCVW_2021_paper.pdf).
+Code for the ICCV 2021 Workshop paper: [A Unified Efficient Pyramid Transformer for Semantic Segmentation](https://openaccess.thecvf.com/content/ICCV2021W/VSPW/papers/Zhu_A_Unified_Efficient_Pyramid_Transformer_for_Semantic_Segmentation_ICCVW_2021_paper.pdf).
 
 ## Installation
 
@@ -40,6 +40,7 @@ Please following the code from [openseg](https://github.com/openseg-group/opense
 The data format should be like this.
 
 ### ADE20k
+You can find the processed ```dt_offset``` file here. 
 
 ```
 path/to/ADEChallengeData2016/
@@ -54,6 +55,8 @@ path/to/ADEChallengeData2016/
     validation/
 ```
 ### PASCAL-Context
+You can find the processed dataset here.
+
 ```
 path/to/PASCAL-Context/
   train/
@@ -105,9 +108,9 @@ We report results on validation sets.
 
 | Backbone | Crop Size | Batch Size | Dataset | Lr schd | Mem(GB) | mIoU(ms+flip) | config |
 | :------: | :-----: | :-----: | :-----: | :-----: | :-----: | :-----: | :-----: | 
-| Res-50 | 480x480 | 16 | ADE20K | 160K | 7.0G | 46.1 | [config](https://github.com/amazon-research/unified-ept/configs/res50_unept_ade20k.py) |
-| DeiT | 480x480 | 16 | ADE20K | 160K | 8.5G | 50.5 | [config](https://github.com/amazon-research/unified-ept/configs/deit_unept_ade20k.py) |
-| DeiT | 480x480 | 16 | PASCAL-Context | 160K | 8.5G | 55.2 | [config](https://github.com/amazon-research/unified-ept/configs/deit_unept_pcontext.py) |
+| Res-50 | 480x480 | 16 | ADE20K | 160K | 7.0G | 46.1 | [config](configs/res50_unept_ade20k.py) |
+| DeiT | 480x480 | 16 | ADE20K | 160K | 8.5G | 50.5 | [config](configs/deit_unept_ade20k.py) |
+| DeiT | 480x480 | 16 | PASCAL-Context | 160K | 8.5G | 55.2 | [config](configs/deit_unept_pcontext.py) |
 
 ## Security
 See [CONTRIBUTING](CONTRIBUTING.md#security-issue-notifications) for more information.

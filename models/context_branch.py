@@ -159,15 +159,11 @@ class DecoderLayer(nn.Module):
 
     @staticmethod
     def get_reference_points(spatial_shapes, device, h, w):
-        
-        # H, W = spatial_shapes[0]
-        # TO change
-        H, W = 60, 60
 
-        ref_y, ref_x = torch.meshgrid(torch.linspace(0.5, H - 0.5, H, dtype=torch.float32, device=device),
-                                        torch.linspace(0.5, W - 0.5, W, dtype=torch.float32, device=device))
-        ref_y = ref_y.reshape(-1)[None] / H
-        ref_x = ref_x.reshape(-1)[None] / W
+        ref_y, ref_x = torch.meshgrid(torch.linspace(0.5, h - 0.5, h, dtype=torch.float32, device=device),
+                                        torch.linspace(0.5, w - 0.5, w, dtype=torch.float32, device=device))
+        ref_y = ref_y.reshape(-1)[None] / h
+        ref_x = ref_x.reshape(-1)[None] / w
         ref = torch.stack((ref_x, ref_y), -1)
         
         reference_points = ref[:, :, None].repeat(1, 1, len(spatial_shapes), 1)
@@ -266,7 +262,7 @@ class context_branch(nn.Module):
         
         normal_(self.level_embed)
 
-    def forward(self, ms_feats, context, query_embed):
+    def forward(self, ms_feats, context, query_embed, q_H, q_W):
 
         src_flatten = []
         spatial_shapes = []
@@ -291,6 +287,6 @@ class context_branch(nn.Module):
         
         query_embed = query_embed.unsqueeze(1).repeat(1, bs, 1)
         context = context + query_embed
-        out = self.decoder(context, memory, spatial_shapes, level_start_index, h, w)
+        out = self.decoder(context, memory, spatial_shapes, level_start_index, q_H, q_W)
         
         return out

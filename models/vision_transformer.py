@@ -316,21 +316,7 @@ class VisionTransformer(nn.Module):
                 dim=embed_dim, num_heads=num_heads, mlp_ratio=mlp_ratio, qkv_bias=qkv_bias, qk_scale=qk_scale,
                 drop=drop_rate, attn_drop=attn_drop_rate, drop_path=dpr[i], norm_layer=norm_layer)
             for i in range(depth)])
-        # self.norm = norm_layer(embed_dim)
-
-        # Representation layer
-        # if representation_size:
-        #     self.num_features = representation_size
-        #     self.pre_logits = nn.Sequential(OrderedDict([
-        #         ('fc', nn.Linear(embed_dim, representation_size)),
-        #         ('act', nn.Tanh())
-        #     ]))
-        # else:
-        #     self.pre_logits = nn.Identity()
-
-        # Classifier head
-        # self.head = nn.Linear(self.num_features, num_classes) if num_classes > 0 else nn.Identity()
-
+       
         trunc_normal_(self.pos_embed, std=.02)
         trunc_normal_(self.cls_token, std=.02)
         self.apply(self._init_weights)
@@ -372,9 +358,6 @@ class VisionTransformer(nn.Module):
                 feats.append(x[:,1:,])
             cnt += 1
 
-        # x = self.norm(x)[:, 0]
-        # x = self.pre_logits(x)
-       
         return feats
 
     def forward(self, x):
@@ -393,11 +376,9 @@ class DistilledVisionTransformer(VisionTransformer):
         self.dist_token = nn.Parameter(torch.zeros(1, 1, self.embed_dim))
         num_patches = self.patch_embed.num_patches
         self.pos_embed = nn.Parameter(torch.zeros(1, num_patches + 2, self.embed_dim))
-        # self.head_dist = nn.Linear(self.embed_dim, self.num_classes) if self.num_classes > 0 else nn.Identity()
-        # trunc_normal_(self.dist_token, std=.02)
+       
         trunc_normal_(self.pos_embed, std=.02)
-        # self.head_dist.apply(self._init_weights)
-
+       
     def forward_features(self, x):
         # taken from https://github.com/rwightman/pytorch-image-models/blob/master/timm/models/vision_transformer.py
         # with slight modifications to add the dist_token
@@ -510,29 +491,5 @@ def deit_base_distilled_patch16_384(
         pos_tokens = pos_tokens.permute(0, 2, 3, 1).flatten(1, 2)
         new_pos_embed = torch.cat((extra_tokens, pos_tokens), dim=1)
         checkpoint_model['pos_embed'] = new_pos_embed
-        
         model.load_state_dict(checkpoint["model"], strict=False)
-    return model
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    return model  

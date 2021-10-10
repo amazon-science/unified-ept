@@ -149,8 +149,9 @@ class UN_EPT(base_segmentor):
         for i, conv_layer in enumerate(self.layers):
             feature = conv_layer(backbone_feats[i]) 
             pyramid_feats.append(feature)
-    
-        out = self.context_branch(pyramid_feats, context, self.query_embed.weight) 
+
+        q_H = q_W = int(math.sqrt(self.num_queries))
+        out = self.context_branch(pyramid_feats, context, self.query_embed.weight, q_H, q_W) 
         
         out = out.unsqueeze(0).reshape([h//8, w//8, bsize, self.feat_dim]).permute(2, 3, 0, 1)
 
@@ -374,4 +375,3 @@ class UN_EPT(base_segmentor):
         loss['acc_seg'] = accuracy(seg_logit, seg_label)
 
         return loss
-

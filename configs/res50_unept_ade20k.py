@@ -105,7 +105,7 @@ evaluation = dict(interval=10000, metric='mIoU')
 
 # yapf:disable
 log_config = dict(
-    interval=20,
+    interval=200,
     hooks=[
         dict(type='TextLoggerHook', by_epoch=False),
         # dict(type='TensorboardLoggerHook')
