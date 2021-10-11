@@ -40,7 +40,7 @@ Please following the code from [openseg](https://github.com/openseg-group/opense
 The data format should be like this.
 
 ### ADE20k
-You can find the processed ```dt_offset``` file here. 
+You can download the processed ```dt_offset``` file [here](https://drive.google.com/drive/folders/1UKIXzc6hHQUfNqynZtcgSjSnGpQJ0GLs?usp=sharing). 
 
 ```
 path/to/ADEChallengeData2016/
@@ -55,7 +55,7 @@ path/to/ADEChallengeData2016/
     validation/
 ```
 ### PASCAL-Context
-You can find the processed dataset here.
+You can download the processed dataset [here](https://drive.google.com/file/d/18-3ySBQEZcBfr0Rs3_mWJWo2jNzyS6VO/view?usp=sharing).
 
 ```
 path/to/PASCAL-Context/

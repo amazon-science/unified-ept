@@ -1,1 +1,3 @@
-*.pyc
+modified_mmseg/**/__pycache__
+
+work_dirs/
